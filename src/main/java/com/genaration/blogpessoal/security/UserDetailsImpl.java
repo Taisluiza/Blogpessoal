@@ -9,36 +9,35 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.genaration.blogpessoal.model.Usuario;
 
 public class UserDetailsImpl implements UserDetails {
-
+	
 	private static final long serialVersionUID = 1L;
-
+	
 	private String userName;
 	private String password;
+	
+	// O atributo authorities é responsável por receber os Direitos de Acesso do Usuário
 	private List<GrantedAuthority> authorities;
-
+	
 	public UserDetailsImpl(Usuario user) {
-		this.userName = user.getUsuario();
+		this.userName =  user.getUsuario();
 		this.password = user.getSenha();
 	}
-
-	public UserDetailsImpl() { 	}
-
+	
+	public UserDetailsImpl() { }
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-
 		return authorities;
 	}
 
 	@Override
 	public String getPassword() {
-
 		return password;
 	}
 
 	@Override
 	public String getUsername() {
-
-		return userName;
+		return userName ;
 	}
 
 	@Override
